@@ -1,19 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int add(int x, int y){
+double add(double x, double y){
     return x+y;
 }
 
-int multiply(int x, int y){
+double multiply(double x, double y){
     return x*y;
 }
 
-int subtract(int x, int y){
+double subtract(double x, double y){
     return x-y;
 }
 
-int divide(int x, int y){
+double divide(double x, double y){
     if(y == 0){
       printf("Division by zero not allowed! Exiting...\n");
       exit(-1);
@@ -25,8 +25,8 @@ int main() {
    printf("This is a simple calculator: \n");
    printf("Enter number '1': ");
    
-   int firstNumber = 0;
-   scanf("%d", &firstNumber);
+   double firstNumber = 0;
+   scanf("%lf", &firstNumber);
    
    printf("Enter '1' for addition, '2' for subtration, '3' for multiplication, '4' for divison: ");
    int operator;
@@ -38,34 +38,34 @@ int main() {
     }
 
    printf("Enter number '2': ");
-   int secondNumber = 0;   
-   scanf("%d", &secondNumber);
+   double secondNumber = 0;   
+   scanf("%lf", &secondNumber);
 
    if (operator == 1)
         {
-            int value = add(firstNumber, secondNumber);
-            printf("%d", value);
+            double value = add(firstNumber, secondNumber);
+            printf("%lf", value);
             printf(" ");   
         } 
     else if (operator == 2)
         {
-            int value = subtract(firstNumber, secondNumber);
-            printf("%d", value);
+            double value = subtract(firstNumber, secondNumber);
+            printf("%lf", value);
             printf(" ");   
         }
 
     else if (operator == 3)
         {
-            int value = multiply(firstNumber, secondNumber);
-            printf("%d", value);
+            double value = multiply(firstNumber, secondNumber);
+            printf("%lf", value);
             printf(" ");   
         }
 
 
     else
         {
-            int value = divide(firstNumber, secondNumber);
-            printf("%d", value);
+            double value = divide(firstNumber, secondNumber);
+            printf("%lf", value);
             printf(" ");   
         }
 
