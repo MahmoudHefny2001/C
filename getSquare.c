@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 double square(double number){
-    return number * 2;
+    return number * number;
 }
 
 int main(){
