@@ -22,6 +22,7 @@ int divide(int x, int y){
 }
 
 int main() {
+   printf("This is a simple calculator: \n");
    printf("Enter number '1': ");
    
    int firstNumber = 0;
@@ -30,6 +31,11 @@ int main() {
    printf("Enter '1' for addition, '2' for subtration, '3' for multiplication, '4' for divison: ");
    int operator;
    scanf("%d", &operator);
+   if (operator > 4)
+    {
+        printf("wrong Input\n");
+        return -1;
+    }
 
    printf("Enter number '2': ");
    int secondNumber = 0;   
@@ -56,12 +62,16 @@ int main() {
         }
 
 
-    else 
+    else
         {
             int value = divide(firstNumber, secondNumber);
             printf("%d", value);
             printf(" ");   
         }
+
+    
+    
+
     printf("\n");
 
    return 0;
