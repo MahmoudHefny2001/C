@@ -30,7 +30,8 @@ int main()
 
         winner = checkWinner();
 
-        if(winner != ' ' || checkFreeSpaces() == 0){
+        if (winner != ' ' || checkFreeSpaces() == 0)
+        {
             break;
         }
 
@@ -38,14 +39,16 @@ int main()
 
         winner = checkWinner();
 
-        if(winner != ' ' || checkFreeSpaces() == 0){
+        if (winner != ' ' || checkFreeSpaces() == 0)
+        {
             break;
         }
-
     }
 
     printBoard();
     printWinner(winner);
+
+    printf("Thanks for playing!\n");
 
     return 0;
 }
@@ -68,7 +71,7 @@ void printBoard()
     printf(" %c | %c | %c ", board[1][0], board[1][1], board[1][2]);
     printf("\n---|---|---\n");
     printf(" %c | %c | %c ", board[2][0], board[2][1], board[2][2]);
-    printf("\n");
+    printf("\n\n");
 }
 
 int checkFreeSpaces()
@@ -123,60 +126,68 @@ void computerMove()
     int x;
     int y;
 
-    if(checkFreeSpaces() > 0){
-        do{
+    if (checkFreeSpaces() > 0)
+    {
+        do
+        {
             x = rand() % 3;
             y = rand() % 3;
-        }while(board[x][y] != ' ');
+        } while (board[x][y] != ' ');
 
         board[x][y] = COMPUTER;
-
     }
-    else{
+    else
+    {
         printWinner(' ');
     }
 }
 
 char checkWinner()
 {
-    //check rows
+    // check rows
     for (int i = 0; i < 3; i++)
     {
-        if(board[i][0] == board[i][1] && board[i][0] == board[i][2]){
+        if (board[i][0] == board[i][1] && board[i][0] == board[i][2])
+        {
             return board[i][0];
         }
     }
 
-    //check columns
+    // check columns
     for (int i = 0; i < 3; i++)
     {
-        if(board[0][i] == board[1][i] && board[0][i] == board[2][i]){
+        if (board[0][i] == board[1][i] && board[0][i] == board[2][i])
+        {
             return board[0][i];
         }
     }
-    
-    //check diagonals
-    if(board[0][0] == board[1][1] && board[0][0] == board[2][2]){
+
+    // check diagonals
+    if (board[0][0] == board[1][1] && board[0][0] == board[2][2])
+    {
         return board[0][0];
     }
 
-    if(board[0][2] == board[1][1] && board[0][2] == board[2][0]){
+    if (board[0][2] == board[1][1] && board[0][2] == board[2][0])
+    {
         return board[0][2];
     }
 
     return ' ';
-
 }
 
 void printWinner(char winner)
 {
-    if(winner == PLAYER){
+    if (winner == PLAYER)
+    {
         printf("YOU WIN!\n");
     }
-    else if (winner == COMPUTER){
+    else if (winner == COMPUTER)
+    {
         printf("YOU LOSE!\n");
     }
-    else{
+    else
+    {
         printf("IT'S A TIE!\n");
     }
 }
