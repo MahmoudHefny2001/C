@@ -1,39 +1,39 @@
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 
-struct node
-{
+typedef struct node{
     int data;
     struct node* next;
-};
+}Node;
 
-void print_data(struct node *head);
 
 int main(){
 
-    struct node node1, node2, node3;
-    struct node *head;
+    Node head, node1, node2, node3, node4;
 
-    node1.data = 10;
-    node2.data = 20;
-    node3.data = 45;
+    head.data = 1;
+    head.next = &node1;
 
-    head = &node1;
+    node1.data = 2;
     node1.next = &node2;
-    node2.next = &node3;
-    node3.next = NULL;
 
-    print_data(head);
+    node2.data = 3;
+    node2.next = &node3;
+
+    node3.data = 4;
+    node3.next = &node4;
+    
+    node4.data = 5;
+    node4.next = NULL;
+
+    Node* node;
+    node = &head;
+
+    while(node->next != NULL){
+        printf("%d\n", node->data);
+        node = node->next;
+    }
 
     return 0;
-}
-
-void print_data(struct node *head){
-    struct node *temp = head;
-    while(temp != NULL){
-        printf("%d - ", temp->data);
-        temp = temp->next;
-    }
-    printf("\n");
-    
 }
