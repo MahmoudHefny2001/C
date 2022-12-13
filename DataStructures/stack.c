@@ -8,7 +8,7 @@ int count = 0;
 
 
 void push(int value){
-    if(value == 256){
+    if(count == 256){
         fprintf(stderr, "There's no space in the stack\n");
         return;
     }
@@ -33,6 +33,7 @@ int main(){
     push(3);
     push(4);
     push(5);
+    push(256);
 
     while (count>0){
         int popped_value = pop();
