@@ -34,10 +34,18 @@ int main(){
     insert(4);
     insert(5);
 
-    while(pointer<count){
-        int value = retrieve();
-        printf("%d\n", value);
-    }
+    int firstOut = retrieve();
+
+    int secondOut = retrieve();
+
+    printf("%d\n", firstOut);
+
+    printf("%d\n", secondOut);
+
+    // while(pointer<count){
+        // int value = retrieve();
+        // printf("%d\n", value);
+    // }
 
     return 0;
 }
