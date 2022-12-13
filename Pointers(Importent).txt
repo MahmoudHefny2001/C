@@ -1,0 +1,36 @@
+@consider the following statements: 
+    int *p = &i;
+    p = &i
+
+    First statement is the declaration and second is simple assignment statement.
+    Why isn't in second statement, p is preceded by * symbol?
+
+    -In C, * symbol has different meanings depending on the context in which it's used.
+        At the time of declaration, * symbol is not acting as an indirection operator.
+        * symbol in the first statement tells the compiler that p is a pointer to an integer
+
+    -If we write *p = &i then it is wrong, because here * symbol indicates the indirection operator
+        and we can't assign the address to some integer variable.
+
+
+    - Therefore. in the second statement. there is no need of * symbol in front of p. It simply means we 
+        are assigning the address to a pointer.
+
+@What is the output of the following program
+
+    void function(const int *pointer){
+        *pointer = 0;
+    }
+
+    int main(){
+
+        const int i = 10;
+        function(&i);
+
+        return 0;
+    }
+
+    Output:
+    Error: Assignment of read-only location *pointer
+
+
