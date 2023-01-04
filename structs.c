@@ -12,6 +12,7 @@ struct Player {
     int score;
 };
 
+
 int main(){
 
     struct Player player1;

@@ -1,46 +1,82 @@
 #include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
+#include <stdbool.h>
 
+#define MAX 10
 
-int stack[256];
-int count = 0;
+typedef char EntryType;
 
+typedef struct{
+    
+    int top;
+    EntryType array[MAX];
 
-void push(int value){
-    if(count == 256){
-        fprintf(stderr, "There's no space in the stack\n");
-        return;
-    }
-    stack[count] = value;
-    count++;    
+}Stack;
+
+void createStack(Stack *stack){
+    stack->top = -1;
 }
 
-int pop(){
-    if(count == 0){
-        fprintf(stderr, "Stack is empty\n");
-        exit(1);
+int isEmpty(Stack stack){
+    if (stack.top == -1){
+        return 1;
     }
-    count--;
-    int popped_value = stack[count];
-    return popped_value;
-}
-
-int main(){
-
-    push(1);
-    push(2);
-    push(3);
-    push(4);
-    push(5);
-    push(256);
-
-    while (count>0){
-        int popped_value = pop();
-        printf("%d\n", popped_value);
-    }
-    
-    
-
     return 0;
+}
+
+int isFull(Stack stack){
+    if(stack.top == MAX-1){
+        return 1;
+    }
+    return 0;
+}
+
+void push(EntryType value, Stack *stack){
+    if (stack->top < MAX){
+        stack->top += 1;
+        stack->array[stack->top] = value;
+    }
+    else{
+        printf("Not allowed stack is full\n");
+    }
+}
+
+EntryType pull(Stack *stack){
+    EntryType toBeReturned = stack->array[stack->top];
+    stack->top -= 1;
+    return toBeReturned;
+
+}
+
+int peak(Stack stack){
+    return stack.top;
+}
+
+void main(){
+    Stack stack;
+    createStack(&stack);
+
+    push('M', &stack);
+    push('A', &stack);
+    push('H', &stack);
+    push('M', &stack);
+    push('O', &stack);
+    push('U', &stack);
+    push('D', &stack);
+
+
+    int is_Empty = isEmpty(stack);
+    if (is_Empty == 1){
+        printf("Empty\n");
+    }
+    else{
+        printf("Not empty\n");
+    }
+    
+    EntryType pulled = pull(&stack);
+    printf("Pulled character is: %c\n", pulled);
+    
+    int top = peak(stack);
+    printf("Top is: %d\n", top);
+
+
 }
