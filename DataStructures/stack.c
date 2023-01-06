@@ -40,10 +40,14 @@ void push(EntryType value, Stack *stack){
     }
 }
 
-EntryType pull(Stack *stack){
-    EntryType toBeReturned = stack->array[stack->top];
-    stack->top -= 1;
-    return toBeReturned;
+EntryType pop(Stack *stack){
+    if(stack->top>-1){
+        EntryType toBeReturned = stack->array[stack->top];
+        stack->top -= 1;
+        return toBeReturned;
+    }else{
+        return '0';
+    }
 
 }
 
@@ -72,11 +76,22 @@ void main(){
         printf("Not empty\n");
     }
     
-    EntryType pulled = pull(&stack);
+    EntryType returned = pop(&stack);
+    if (returned == '0'){
+        printf("Stack underflow\n");
+    }else{
+        printf("%c\n", returned);
+    }
+
+    EntryType pulled = pop(&stack);
     printf("Pulled character is: %c\n", pulled);
     
-    int top = peak(stack);
-    printf("Top is: %d\n", top);
+    int peakElement = peak(stack);
+    printf("Top is: %d\n", peakElement);
 
+    int i = stack.top;
+    for(; i >= 0; i--){
+        printf("%c\n",stack.array[i]);
+    }
 
 }

@@ -1,51 +1,79 @@
 #include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
+#include <stdbool.h>
+#include "Headers/queue.h"
+
+void main(){
+    Queue queue;
+    createQueue(&queue);
+
+    bool isEmpty = isQueueEmpty(queue);
+    printf("Is queue empty: %s\n", isEmpty? "True": "False");
+
+    bool isFull = isQueueFull(queue);
+    printf("Is queue full: %s\n", isFull? "True": "False");
+
+    Enqueue(&queue, 0);
+    Enqueue(&queue, 1);
+    Enqueue(&queue, 2);
+    Enqueue(&queue, 3);
+    Enqueue(&queue, 4);
+    Enqueue(&queue, 5);
+    Enqueue(&queue, 6);
+    Enqueue(&queue, 7);
+    Enqueue(&queue, 8);
+    Enqueue(&queue, 9);
+
+    isFull = isQueueFull(queue);
+    isEmpty = isQueueEmpty(queue);
+
+    printf("\nIs queue empty: %s\n", isEmpty? "True": "False");
+    printf("Is queue full: %s\n", isFull? "True": "False");
+
+    Enqueue(&queue, 10);
 
 
-int queue[256];
-int count = 0;
-int pointer = 0;
+    Type item = Dequeue(&queue);
+    
+    printf("\nFirst item was: %d\n", item);
+    
+    Type secondItem = Dequeue(&queue); 
+    
+    printf("\nSecond item was: %d\n", secondItem);
 
-void insert(int value){
-    if(count==256){
-        fprintf(stderr, "There's no space in the queue\n");
-        return;
-    }
-    queue[count] = value;
-    count++;
-}
+    Type thirdItem = Dequeue(&queue);
 
-int retrieve(){
-    if(pointer == count){
-        fprintf(stderr, "Queue is empty\n");
-        exit(1);
-    }
-    int value = queue[pointer];
-    pointer++;
-    return value;
-}
+    printf("\nThird item was: %d\n", thirdItem);
 
-int main(){
+    item = Dequeue(&queue);
 
-    insert(1);
-    insert(2);
-    insert(3);
-    insert(4);
-    insert(5);
+    printf("\nFourth item was: %d\n", item);
 
-    int firstOut = retrieve();
+    item = Dequeue(&queue);
 
-    int secondOut = retrieve();
+    printf("\nFifth item was: %d\n", item);
 
-    printf("%d\n", firstOut);
+    item = Dequeue(&queue);
 
-    printf("%d\n", secondOut);
+    printf("\n6th item was: %d\n", item);
 
-    // while(pointer<count){
-        // int value = retrieve();
-        // printf("%d\n", value);
-    // }
+    item = Dequeue(&queue);
 
-    return 0;
+    printf("\n7th item was: %d\n", item);
+
+    item = Dequeue(&queue);
+
+    printf("\n8th item was: %d\n", item);
+
+    item = Dequeue(&queue);
+
+    printf("\n9th item was: %d\n", item);
+
+    item = Dequeue(&queue);
+
+    printf("\n10th item was: %d\n", item);
+
+    item = Dequeue(&queue);
+
+    printf("\nLast attempt: %d\n", item);
+
 }
